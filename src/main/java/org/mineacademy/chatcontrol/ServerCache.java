@@ -55,11 +55,6 @@ public final class ServerCache extends YamlConfig {
 	private boolean essentialsUserMapImported;
 
 	/**
-	 * Has at least one administrator completed the plugin's tour?
-	 */
-	private boolean tourCompleted;
-
-	/**
 	 * Stores loaded region from the disk
 	 */
 	private List<VisualizedRegion> regions = new ArrayList<>();
@@ -88,7 +83,6 @@ public final class ServerCache extends YamlConfig {
 
 		this.unmuteTime = getLong("Unmute_Time");
 		this.essentialsUserMapImported = getBoolean("Essentials_User_Map_Imported", false);
-		this.tourCompleted = getBoolean("Tour_Completed", false);
 		this.regions = this.loadRegions();
 
 		cleanPlayers();
@@ -202,7 +196,6 @@ public final class ServerCache extends YamlConfig {
 		map.putIf("Unmute_Time", this.unmuteTime);
 		map.putIf("Essentials_User_Map_Imported", this.essentialsUserMapImported);
 		map.putIf("Regions", this.regions);
-		map.putIf("Tour_Completed", this.tourCompleted);
 
 		if (MySQL.ENABLED)
 			Common.runAsync(() -> Database.getInstance().saveMails(this.mails));
@@ -249,6 +242,10 @@ public final class ServerCache extends YamlConfig {
 
 		save();
 	}
+	
+	public boolean isTourCompleted() {
+		return true;
+	}
 
 	/**
 	 * Set that the tour has been completed at least once.
@@ -256,9 +253,7 @@ public final class ServerCache extends YamlConfig {
 	 * @param tourCompleted the tourCompleted to set
 	 */
 	public void setTourCompleted(boolean tourCompleted) {
-		this.tourCompleted = tourCompleted;
-
-		save();
+		//i don't care
 	}
 
 	/**

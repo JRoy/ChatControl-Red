@@ -1,0 +1,7 @@
+# -----------------------------------------------------------------------------------------
+# Represents a chat format file that can be used to stylize messages.
+# See the chat.yml for a tutorial on how this works.
+# -----------------------------------------------------------------------------------------
+
+# The parts of this format.
+Parts: {}

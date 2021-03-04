@@ -1,0 +1,47 @@
+Type: MESSAGE
+Key: "item"
+Value: |-
+  // A valid JavaScript code follows below. You can use the "player" variable to get
+  // Bukkit's player instance. 
+  
+  // Call the function
+  displayName();
+
+  function displayName() {
+    var item = player.getItemInHand();
+  
+    if (item == null)
+      return "Air";
+
+    var metadata = item.getItemMeta();
+    
+    // If the item has meta data and a custom name, show that name instead
+    if (metadata != null && metadata.hasDisplayName())
+      return metadata.getDisplayName();
+
+    // Example of using Java classes to show custom names for custom types
+    // JavaScript has to wrap all Java classes using Java.type, see 
+    // https://winterbe.com/posts/2014/04/05/java8-nashorn-tutorial/#invoking-java-methods-from-javascript
+    var stone = Java.type("org.bukkit.Material").STONE;
+     
+    // You can, for example, print custom names for certain materials
+    //if (item.getType() == stone)
+    //  return "My Shiny Little Stone";
+  
+    // We use a class that is packed in Spigot server's JAR to capitalize our item
+    var wordUtils = Java.type("org.apache.commons.lang.WordUtils");
+    var name = item.getType().name().toLowerCase().replace('_', ' ').replace('_', ' ');
+  
+    // Return the item name deducted from item's type, capitalized
+    return wordUtils.capitalize(name);
+  }
+
+Hover_Item: "player.getItemInHand()"
+Hover: []
+Open_Url: ""
+Suggest_Command: ""
+Run_Command: ""
+Sender_Condition: ""
+Receiver_Condition: ""
+Sender_Permission: ""
+Receiver_Permission: ""

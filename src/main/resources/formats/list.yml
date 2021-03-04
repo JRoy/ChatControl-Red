@@ -1,0 +1,17 @@
+# -----------------------------------------------------------------------------------------
+# The default format used in the /list command.
+# -----------------------------------------------------------------------------------------
+
+# The parts of this format.
+Parts: 
+  
+  # See the chat.yml format file for a tutorial on how this works.
+  front:
+    Message: " &7{count}. &f{sort_prefix+}"
+  
+  player: 
+    Message: "{player_name}"
+    Hover:
+    - "&7Server: &f{server_name}"
+    - "&7Nick: &f{player_nick}"
+    - "&7Vanished: &f{player_is_vanished}"
